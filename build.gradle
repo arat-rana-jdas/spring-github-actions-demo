@@ -27,6 +27,12 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+tasks.register("runOnGitHub") {
+    dependsOn(":app:lint", ":app:testDebugUnitTest")
+    group = "custom"      // 3
+    description = " ./gradlew runOnGitHub # runs on GitHub Action"
+}
+
 test {
     useJUnitPlatform()
 }
