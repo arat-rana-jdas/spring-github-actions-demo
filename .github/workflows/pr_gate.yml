@@ -1,4 +1,6 @@
 name: Pull Request Intercepter
+env:
+  WORKSPACE_ENV_VAR: 'custom workspace environment variable'
 
 on:
   push:
@@ -18,7 +20,10 @@ jobs:
       with:
         java-version: 11
     - name: Run tests
-      run: echo first actions
+      run: |
+        echo first actions
+        echo accessing env variable
+        echo $WORKSPACE_ENV_VAR
     - name: Cache Gradle packages
       uses: actions/cache@v2
       with:
