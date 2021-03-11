@@ -21,5 +21,7 @@ jobs:
       run: echo first actions
     - uses: eskatos/gradle-command-action@v1
       with:
+        build-root-directory: #
+        gradle-version: 6.5
         arguments: build
       id: gradle
