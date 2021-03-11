@@ -26,6 +26,8 @@ jobs:
       run: |
         echo "Accessing environment variables in run command"
         echo "$WORKSPACE_ENV_VAR"
+        echo "-----------------------"
+        echo "{{ env.$WORKSPACE_ENV_VAR }}"
     - name: Cache Gradle packages
       uses: actions/cache@v2
       with:
