@@ -2,9 +2,9 @@ name: Pull Request Intercepter
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ spring-github-actions-demo ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
