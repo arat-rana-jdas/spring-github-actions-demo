@@ -1,4 +1,4 @@
-name: Scala CI
+name: Pull Request Intercepter
 
 on:
   push:
