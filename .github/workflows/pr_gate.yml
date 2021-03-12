@@ -1,6 +1,7 @@
 name: Pull Request Intercepter
 env:
   WORKSPACE_ENV_VAR: 'custom workspace environment variable'
+  ARTIFACT_NAME: 'spring-action-demo-artifact'
 
 on:
   push:
@@ -56,7 +57,7 @@ jobs:
       - uses: hmarr/auto-approve-action@v2.0.0
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
-      - uses: managedkaos/merge-pull-request@v1.2
+      - uses: pascalgn/automerge-action@v0.13.1
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
   depends:
@@ -64,3 +65,13 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: date
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v2
+      - name: Upload the artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: .
