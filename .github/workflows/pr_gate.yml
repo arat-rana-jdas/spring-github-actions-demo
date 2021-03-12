@@ -6,6 +6,7 @@ on:
   push:
     branches: [ spring-github-actions-demo ]
   pull_request:
+    types: [opened, reopened]
     branches: [ master ]
 
 jobs:
@@ -46,6 +47,18 @@ jobs:
       run: |
         rm -f ~/.gradle/caches/modules-2/modules-2.lock
         rm -f ~/.gradle/caches/modules-2/gc.properties
+  merge:
+    if: github.actor == 'arat-rana-jdas'
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: hmarr/auto-approve-action@2.0.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+      - uses: managedkaos/merge-pullrequest@1.2
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
   depends:
     needs: [build]
     runs-on: macos-latest
