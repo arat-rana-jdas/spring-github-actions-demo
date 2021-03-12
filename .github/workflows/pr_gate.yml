@@ -65,8 +65,3 @@ jobs:
       - uses: pascalgn/automerge-action@v0.13.1
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-  depends:
-    needs: [build]
-    runs-on: macos-latest
-    steps:
-      - run: date
