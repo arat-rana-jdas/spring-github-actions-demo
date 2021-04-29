@@ -5,7 +5,9 @@ env:
 
 on:
   push:
-    branches: [ spring-github-actions-demo ]
+    branches: 
+      - spring-github-actions-demo
+      - master
   pull_request:
     types: [opened, reopened]
     branches: [ master ]
