@@ -9,7 +9,7 @@ on:
   pull_request:
     types: [opened, reopened]
     branches: [ master ]
-
+  status: {}
 jobs:
   build:
 
@@ -61,12 +61,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: autoapprove
       - uses: actions/checkout@v1
       - uses: hmarr/auto-approve-action@v2.0.0
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
+      - name: automerge
       - uses: pascalgn/automerge-action@v0.13.1
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           MERGE_LABELS: "automerge"
           MERGE_REMOVE_LABELS: "automerge"
+          MERGE_METHOD: "squash"
