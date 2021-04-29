@@ -59,6 +59,7 @@ jobs:
     if: github.actor == 'arat-rana-jdas' && github.event_name == 'pull_request'
     needs: [build]
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v1
       - uses: hmarr/auto-approve-action@v2.0.0
