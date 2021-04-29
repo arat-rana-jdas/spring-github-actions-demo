@@ -31,7 +31,7 @@ jobs:
         echo "-----------------------"
         echo "Accessing environment variables using env context"
         echo "${{ env.WORKSPACE_ENV_VAR }}"
-        echo Actor: "${{ github.actor }}"
+        echo Actor:: "${{ github.actor }}"
         echo Commited By:: "${{ github.event.commits[0].author.name }}"
     - name: Cache Gradle packages
       uses: actions/cache@v2
