@@ -23,8 +23,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: automerge
-        run: |
-          echo "merge workflow running"
         uses: "pascalgn/automerge-action@v0.13.1"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
