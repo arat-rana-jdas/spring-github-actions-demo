@@ -31,6 +31,8 @@ jobs:
         echo "-----------------------"
         echo "Accessing environment variables using env context"
         echo "${{ env.WORKSPACE_ENV_VAR }}"
+        echo Actor:: "${{ github.actor }}"
+        echo Commited By:: "${{ github.event.commits[0].author.name }}"
     - name: Cache Gradle packages
       uses: actions/cache@v2
       with:
@@ -54,7 +56,7 @@ jobs:
         name: ${{ env.ARTIFACT_NAME }}
         path: ./build/libs/*.*
   merge:
-    if: github.actor == 'arat-rana-jdas'
+    if: github.actor == 'arat-rana-jdas' && github.event_name == 'pull_request'
     needs: [build]
     runs-on: ubuntu-latest
     steps:
@@ -65,3 +67,5 @@ jobs:
       - uses: pascalgn/automerge-action@v0.13.1
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          MERGE_LABELS: "automerge"
+          MERGE_REMOVE_LABELS: "automerge"
