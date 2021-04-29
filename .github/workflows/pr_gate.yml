@@ -70,7 +70,8 @@ jobs:
         name: ${{ env.ARTIFACT_NAME }}
         path: ./build/libs/*.*
   merge:
-    if: github.actor == 'arat-rana-jdas' && github.event_name == 'pull_request'
+    # if: github.actor == 'arat-rana-jdas' && github.event_name == 'pull_request'
+    if: github.actor == 'arat-rana-jdas'
     needs: [build]
     runs-on: ubuntu-latest
     steps:
