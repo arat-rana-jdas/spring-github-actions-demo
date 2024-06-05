@@ -1,4 +1,4 @@
-name: PullRequestIntercepter
+name: Pull Request Intercepter
 env:
   WORKSPACE_ENV_VAR: 'custom workspace environment variable'
   ARTIFACT_NAME: 'spring-action-demo-artifact'
